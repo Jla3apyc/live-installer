@@ -665,7 +665,8 @@ class InstallerWindow:
         if self.setup.keyboard_variant:
             os.system('setxkbmap -variant ' + self.setup.keyboard_variant)
         else:
-            os.system('setxkbmap -layout ' + self.setup.keyboard_layout)
+            os.system('setxkbmap -layout ' + 'us,' + self.setup.keyboard_layout)
+            os.system('setxkbmap -option ' + 'grp:alt_shift_toggle,grp_led:scroll')
         self.setup.print_setup()
         # Set preview image
         self.wTree.get_widget("image_keyboard").set_from_file(LOADING_ANIMATION)
@@ -802,9 +803,9 @@ class InstallerWindow:
                 for partition in self.setup.partitions:
                     if(partition.mount_as == "/"):
                         found_root_partition = True
-                        if partition.format_as is None or partition.format_as == "":                            
-                            ErrorDialog(_("Installation Tool"), _("Please indicate a filesystem to format the root (/) partition with before proceeding."))
-                            return
+#                        if partition.format_as is None or partition.format_as == "":                            
+#                            ErrorDialog(_("Installation Tool"), _("Please indicate a filesystem to format the root (/) partition with before proceeding."))
+#                            return
                 if not found_root_partition:
                     ErrorDialog(_("Installation Tool"), "<b>%s</b>" % _("Please select a root (/) partition."), _("A root partition is needed to install Linux Mint on.\n\n - Mount point: /\n - Recommended size: 30GB\n - Recommended filesystem format: ext4\n "))
                     return
