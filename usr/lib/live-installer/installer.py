@@ -445,9 +445,10 @@ class InstallerEngine:
                 newconsolefh.write("XKBMODEL=\"%s\"\n" % setup.keyboard_model)
             elif(line.startswith("XKBLAYOUT=")):
                 newconsolefh.write("XKBLAYOUT=\"us,%s\"\n" % setup.keyboard_layout)
-                newconsolefh.write("XKBOPTIONS=\"grp:alt_shift_toggle,grp_led:scroll\"\n" % setup.keyboard_layout)
             elif(line.startswith("XKBVARIANT=") and setup.keyboard_variant is not None):
                 newconsolefh.write("XKBVARIANT=\"%s\"\n" % setup.keyboard_variant)
+            elif(line.startswith("XKBOPTIONS=")):
+                newconsolefh.write("XKBOPTIONS=\"grp:alt_shift_toggle,grp_led:scroll\"\n")
             else:
                 newconsolefh.write("%s\n" % line)
         consolefh.close()
@@ -463,9 +464,10 @@ class InstallerEngine:
                 newconsolefh.write("XKBMODEL=\"%s\"\n" % setup.keyboard_model)
             elif(line.startswith("XKBLAYOUT=")):
                 newconsolefh.write("XKBLAYOUT=\"us,%s\"\n" % setup.keyboard_layout)
-                newconsolefh.write("XKBOPTIONS=\"grp:alt_shift_toggle,grp_led:scroll\"\n" % setup.keyboard_layout)
             elif(line.startswith("XKBVARIANT=") and setup.keyboard_variant is not None):
                 newconsolefh.write("XKBVARIANT=\"%s\"\n" % setup.keyboard_variant)
+            elif(line.startswith("XKBOPTIONS=")):
+                newconsolefh.write("XKBOPTIONS=\"grp:alt_shift_toggle,grp_led:scroll\"\n")
             else:
                 newconsolefh.write("%s\n" % line)
         consolefh.close()
